@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Todo List App ✅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App de lista de tareas hecha con React + TypeScript + Vite. Proyecto para practicar hooks, tipado y manejo de estado.
 
-Currently, two official plugins are available:
+## 🚀 Demo
+[Ver demo en vivo] *próximamente*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- Agregar tareas con validación de input vacío
+- Eliminar tareas por ID único
+- Soporte para tecla Enter
+- Persistencia con LocalStorage *próximamente*
+- UI con Chakra UI *próximamente*
 
-## React Compiler
+## 🛠️ Tech Stack
+| Tecnología | Uso |
+| --- | --- |
+| React 18 | Librería UI |
+| TypeScript | Tipado estático |
+| Vite | Build tool + dev server |
+| React Hooks | useState, useEffect |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Instalación local
 
-## Expanding the ESLint configuration
+1. Clona el repo
+```bash
+git clone https://github.com/MiguelZac101/todo-app.git
+cd todo-app
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. Instala dependencias
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Corre en dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Abre http://localhost:5173
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📝 Scripts disponibles
+| Comando | Descripción |
+| --- | --- |
+| `npm run dev` | Levanta server de desarrollo |
+| `npm run build` | Compila para producción en `/dist` |
+| `npm run preview` | Preview del build de producción |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 Lo que aprendí
+- Manejo de estado con `useState` tipado `useState<Task[]>`
+- Eventos en TS: `React.KeyboardEvent<HTMLInputElement>`
+- Inmutabilidad: actualizar arrays sin mutar `[...tasks, newTask]`
+- Buenas prácticas: usar `key={id}` en lugar de `index`
+- Commits semánticos con Conventional Commits
+
+## 📸 Screenshots
+![screenshot](./public/screenshot.png) *próximamente*
