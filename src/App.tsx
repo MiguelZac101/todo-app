@@ -58,7 +58,7 @@ function App() {
 	return (
 		<>
 			<Box minH="100vh" bg="gray.900"> {/* Fondo oscuro full screen */}
-				<Container maxW="container.md" py={10}>
+				<Container maxW="md" py={10}>
 					<VStack gap={6}>
 						<Heading color="white">Mi Todo List</Heading>
 
