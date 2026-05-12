@@ -26,8 +26,7 @@ function App() {
 
 	const [input, setInput] = useState('')
 	const [filter, setFilter] = useState<FilterType>('all') // ← nuevo estado para el filtro
-	const [taskToDelete, setTaskToDelete] = useState<Task | null>(null)
-	const [taskToEdit, setTaskToEdit] = useState<Task | null>(null)
+	const [taskToDelete, setTaskToDelete] = useState<Task | null>(null)	
 
 	// Guarda tareas en localStorage cada vez que cambian
 	useEffect(() => {
