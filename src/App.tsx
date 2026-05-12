@@ -2,13 +2,7 @@ import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Checkbox 
 import './App.css'
 import { useEffect, useState } from "react"
 import EmptyState from './components/EmptyState.tsx'
-
-// Type fuera del componente para que no se redeclare cada render
-type Task = {
-	id: number
-	name: string
-	completed: boolean
-}
+import type { Task } from './types'
 
 function App() {
 
