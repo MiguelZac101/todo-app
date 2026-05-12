@@ -2,10 +2,10 @@
 
 Aplicación de tareas moderna construida con React 18, TypeScript y Chakra UI v3.2
 
-[[Deploy](https://img.shields.io/badge/demo-live-brightgreen)](https://tu-app.vercel.app)
-[[React](https://img.shields.io/badge/React-18-blue)](https://react.dev)
-[[Chakra UI](https://img.shields.io/badge/Chakra-3.2-teal)](https://chakra-ui.com)
-[[TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org)
+[![Deploy](https://img.shields.io/badge/demo-live-brightgreen)](https://todo-kqs6ms0hk-miguelzac101s-projects.vercel.app/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://react.dev)
+[![Chakra UI](https://img.shields.io/badge/Chakra-3.2-teal)](https://chakra-ui.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org)
 
 ![Preview](./preview.png)
 
@@ -95,7 +95,7 @@ Este proyecto usa [Conventional Commits](https://www.conventionalcommits.org/):
 
 Desplegado en Vercel: [tu-app.vercel.app](https://tu-app.vercel.app)
 
-[[Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/MiguelZac101/todo-app)
+[![Deploy with Vercel](https://vercel.com/button)](https://todo-kqs6ms0hk-miguelzac101s-projects.vercel.app/)
 
 ## 📸 Screenshots
 
