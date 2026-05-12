@@ -1,6 +1,7 @@
-import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Center, Checkbox } from '@chakra-ui/react'
+import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Checkbox } from '@chakra-ui/react'
 import './App.css'
 import { useEffect, useState } from "react"
+import EmptyState from './components/EmptyState.tsx'
 
 // Type fuera del componente para que no se redeclare cada render
 type Task = {
@@ -89,26 +90,8 @@ function App() {
 						</HStack>
 
 						<VStack w="100%" gap={3} align="stretch">
-							{ tasks.length === 0 ? (
-								<Center
-									w="100%"
-									py={10}
-									bg="gray.800"
-									borderRadius="md"
-									borderWidth="1px"
-									borderColor="gray.700"
-									borderStyle="dashed"
-								>
-									<VStack>
-										<Text fontSize="4xl">📝</Text>
-										<Text color="gray.400" fontSize="lg">
-											No hay tareas todavía
-										</Text>
-										<Text color="gray.500" fontSize="sm">
-											Agrega una arriba para empezar
-										</Text>
-									</VStack>
-								</Center>
+							{ tasks.length === 0 ? (								
+								<EmptyState />
 							) : (						
 							tasks.map(task => (
 								<HStack
