@@ -1,6 +1,31 @@
-import { Center, Text, VStack } from "@chakra-ui/react"
+import { Center, VStack, Text } from '@chakra-ui/react'
+import type { FilterType } from '../types'
 
-const EmptyState = () => {
+type EmptyStateProps = {
+	filter: FilterType
+}
+
+export default function EmptyState({ filter }: EmptyStateProps) {
+	const messages = {
+		all: {
+			emoji: '📝',
+			title: 'No hay tareas todavía',
+			subtitle: 'Agrega una arriba para empezar'
+		},
+		active: {
+			emoji: '🎉',
+			title: 'No hay pendientes',
+			subtitle: 'Todo al día'
+		},
+		completed: {
+			emoji: '💪',
+			title: 'Nada completado aún',
+			subtitle: 'Marca una tarea como lista'
+		}
+	}
+
+	const { emoji, title, subtitle } = messages[filter]
+
 	return (
 		<Center
 			w="100%"
@@ -12,16 +37,10 @@ const EmptyState = () => {
 			borderStyle="dashed"
 		>
 			<VStack>
-				<Text fontSize="4xl">📝</Text>
-				<Text color="gray.400" fontSize="lg">
-					No hay tareas todavía
-				</Text>
-				<Text color="gray.500" fontSize="sm">
-					Agrega una arriba para empezar
-				</Text>
+				<Text fontSize="4xl">{emoji}</Text>
+				<Text color="gray.400" fontSize="lg">{title}</Text>
+				<Text color="gray.500" fontSize="sm">{subtitle}</Text>
 			</VStack>
 		</Center>
 	)
 }
-
-export default EmptyState

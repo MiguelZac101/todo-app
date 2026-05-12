@@ -122,7 +122,7 @@ function App() {
 						{/* Lista filtrada */}
 						<VStack w="100%" gap={3} align="stretch">
 							{filteredTasks.length === 0 ? (
-								<EmptyState />
+								<EmptyState filter={filter} />
 							) : (
 								filteredTasks.map(task => (
 									<TaskItem
