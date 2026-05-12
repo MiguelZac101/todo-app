@@ -1,6 +1,7 @@
-import { Button, Checkbox, HStack, Input, Text } from "@chakra-ui/react";
+import { Checkbox, HStack, IconButton, Input, Text } from "@chakra-ui/react";
 import type { Task } from "../types";
 import { useState } from "react";
+import { LuCheck, LuPencil, LuTrash2, LuX } from "react-icons/lu";
 
 type TaskItemProps = {
     task: Task
@@ -41,58 +42,88 @@ const TaskItem = ({ task, onDelete, onCompleted, onEdit }: TaskItemProps) => {
 			borderColor="gray.700"
 			opacity={task.completed ? 0.6 : 1}			
 		>
-			<Checkbox.Root
-				checked={task.completed}
-				onCheckedChange={() => onCompleted(task.id)}
-				colorPalette="green"
-			>
-				<Checkbox.HiddenInput />
-				<HStack>
-					<Checkbox.Control />
-					<Checkbox.Label>
-						{isEditing? (
-							<Input
-								value={editedName}
-								onChange={e => setEditedName(e.target.value)}
-								onKeyDown={handleKeyDown}
-								onBlur={handleSave}
-								autoFocus
-								size="sm"
-								variant="flushed"
-								color="white"
-							/>
-						) : (
-							<Text
-								color="gray.100"
-								textDecoration={task.completed ? "line-through" : "none"}
-							>
-								{task.name}
-							</Text>
-						)}
-						
-					</Checkbox.Label>
-				</HStack>
-			</Checkbox.Root>
-		
-			<Button
-				colorPalette="green"
-				size="sm"
-				variant="outline"
-				onClick={() => setIsEditing(true)}
-				ml="auto"
-			>
-				Editar
-			</Button>		
+			<HStack flex={1} >			
+			
+				<Checkbox.Root
+					checked={task.completed}
+					onCheckedChange={() => onCompleted(task.id)}
+					colorPalette="green"
+				>
+					<Checkbox.HiddenInput />
+					<HStack>
+						<Checkbox.Control />
+						<Checkbox.Label>
+							{isEditing? (
+								<Input
+									value={editedName}
+									onChange={e => setEditedName(e.target.value)}
+									onKeyDown={handleKeyDown}
+									onBlur={handleSave}
+									autoFocus
+									size="sm"
+									variant="flushed"
+									color="white"
+								/>
+							) : (
+								<Text
+									color="gray.100"
+									textDecoration={task.completed ? "line-through" : "none"}
+								>
+									{task.name}
+								</Text>
+							)}
+							
+						</Checkbox.Label>
+					</HStack>
+				</Checkbox.Root>
 
-			<Button
-				colorPalette="red"
-				size="sm"
-				variant="ghost"
-				onClick={() => onDelete(task.id)}
-				ml="auto"
-			>
-				🗑️ Borrar
-			</Button>
+			</HStack>
+			<HStack>
+				{isEditing ? (
+					<>
+						<IconButton
+							size="sm"
+							variant="ghost"
+							colorPalette="green"
+							onClick={handleSave}
+							aria-label="Guardar"
+						>
+							<LuCheck />
+						</IconButton>
+						<IconButton
+							size="sm"
+							variant="ghost"
+							colorPalette="red"
+							onClick={handleCancel}
+							aria-label="Cancelar"
+						>
+							<LuX />
+						</IconButton>
+					</>
+				) : (
+					<>
+						<IconButton
+							size="sm"
+							variant="ghost"
+							colorPalette="blue"
+							onClick={() => setIsEditing(true)}
+							disabled={task.completed}
+							aria-label="Editar"
+						>
+							<LuPencil />
+						</IconButton>
+						<IconButton
+							size="sm"
+							variant="ghost"
+							colorPalette="red"
+							onClick={() => onDelete(task.id)}
+							aria-label="Borrar"
+						>
+							<LuTrash2 />
+						</IconButton>
+					</>
+				)}
+			</HStack>
 		</HStack>
 	)
 }
