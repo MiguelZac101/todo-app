@@ -53,12 +53,6 @@ function App() {
 		if (e.key === 'Enter') addTask()  // Enter agrega task
 	}
 
-	const deleteTask = (idToDelete: number) => {
-		// Elimina tarea por ID
-		// Filtra tareas, manteniendo solo las que no coinciden con el ID a eliminar
-		setTasks(tasks.filter((task) => task.id !== idToDelete))
-	}
-
 	// Función para alternar el estado de completado de una tarea
 	const toggleComplete = (idToToggle: number) => {
 		// Cambia el estado de completado de una tarea
