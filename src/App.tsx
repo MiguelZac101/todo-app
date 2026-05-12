@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Center } from '@chakra-ui/react'
+import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Center, Checkbox } from '@chakra-ui/react'
 import './App.css'
 import { useEffect, useState } from "react"
 
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 type Task = {
 	id: number
 	name: string
+	completed: boolean
 }
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
 
 		const newTask: Task = {
 			id: Date.now(), // id único
-			name: input.trim()
+			name: input.trim(),
+			completed: false
 		}
 
 		setTasks([...tasks, newTask])  // agrega nueva tarea
@@ -53,6 +55,14 @@ function App() {
 		// Elimina tarea por ID
 		// Filtra tareas, manteniendo solo las que no coinciden con el ID a eliminar
 		setTasks(tasks.filter((task) => task.id !== idToDelete))
+	}
+
+	// Función para alternar el estado de completado de una tarea
+	const toggleComplete = (idToToggle: number) => {
+		// Cambia el estado de completado de una tarea
+		setTasks(tasks.map((task) => 
+			task.id === idToToggle ? { ...task, completed: !task.completed } : task
+		))
 	}
 
 	return (
@@ -108,15 +118,36 @@ function App() {
 									borderRadius="md"
 									borderWidth="1px"
 									borderColor="gray.700"
+									opacity={task.completed ? 0.6 : 1}
 								>
-									<Text color="gray.100" flex="1">{task.name}</Text>
+									
+									<Checkbox.Root
+										checked={task.completed}  
+										onCheckedChange={() => toggleComplete(task.id)}
+										colorPalette="green"
+									>
+										<Checkbox.HiddenInput />
+										<HStack>
+											<Checkbox.Control />
+											<Checkbox.Label>
+												<Text
+													color="gray.100"
+													textDecoration={task.completed ? "line-through" : "none"}
+												>
+													{task.name}
+												</Text>
+											</Checkbox.Label>
+										</HStack>
+									</Checkbox.Root>
+									
 									<Button
 										colorPalette="red"
 										size="sm"
 										variant="ghost"
 										onClick={() => deleteTask(task.id)}
+										ml="auto" // Empuja el botón a la derecha
 									>
-										Borrar
+										🗑️ Borrar
 									</Button>
 								</HStack>
 							)))}
