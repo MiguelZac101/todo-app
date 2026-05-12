@@ -58,17 +58,19 @@ npm run preview
 
 ## 📁 Estructura
 
+```
 src/
-├── components/ # Componentes reutilizables
-│ ├── TaskItem.tsx
-│ ├── TaskProgress.tsx
-│ ├── FilterTabs.tsx
-│ ├── EmptyState.tsx
-│ └── DeleteConfirmDialog.tsx
-├── types/ # Tipos TypeScript
-│ └── index.ts
-├── App.tsx # Componente principal
-└── main.tsx # Entry point
+├── components/
+│   ├── TaskItem.tsx
+│   ├── TaskProgress.tsx
+│   ├── FilterTabs.tsx
+│   ├── EmptyState.tsx
+│   └── DeleteConfirmDialog.tsx
+├── types/
+│   └── index.ts
+├── App.tsx
+└── main.tsx
+```
 
 ## 🎯 Roadmap
 
@@ -93,9 +95,9 @@ Este proyecto usa [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 🌐 Deploy
 
-Desplegado en Vercel: [tu-app.vercel.app](https://tu-app.vercel.app)
+Desplegado en Vercel: [todo-app](https://todo-kqs6ms0hk-miguelzac101s-projects.vercel.app/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://todo-kqs6ms0hk-miguelzac101s-projects.vercel.app/)
+[[Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/miguelzac101/todo-app)
 
 ## 📸 Screenshots
 
@@ -114,6 +116,6 @@ Desplegado en Vercel: [tu-app.vercel.app](https://tu-app.vercel.app)
 ## 👨‍💻 Autor
 
 **Miguel Zack**
-- GitHub: [@tu-usuario](https://github.com/MiguelZac101)
+- GitHub: [@MiguelZac101](https://github.com/MiguelZac101)
 
 
