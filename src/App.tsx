@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Checkbox } from '@chakra-ui/react'
+import { Box, Button, HStack, Input, VStack, Heading, Container } from '@chakra-ui/react'
 import './App.css'
 import { useEffect, useState } from "react"
 import EmptyState from './components/EmptyState.tsx'
