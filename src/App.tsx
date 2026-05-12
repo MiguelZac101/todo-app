@@ -6,6 +6,7 @@ import type { FilterType, Task } from './types'
 import TaskItem from './components/TaskItem.tsx'
 import { TaskProgress } from './components/TaskProgress.tsx'
 import { FilterTabs } from './components/FilterTabs.tsx'
+import { DeleteConfirmDialog } from './components/DeleteConfirmDialog.tsx'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 
 	const [input, setInput] = useState('')
 	const [filter, setFilter] = useState<FilterType>('all') // ← nuevo estado para el filtro
+	const [taskToDelete, setTaskToDelete] = useState<Task | null>(null)
 
 	// Guarda tareas en localStorage cada vez que cambian
 	useEffect(() => {
@@ -78,6 +80,25 @@ function App() {
 		return true
 	})
 
+
+	// En lugar de borrar directo, abrimos el dialog
+	const handleDeleteClick = (id: number) => {
+		const task = tasks.find(t => t.id === id)
+		if (task) setTaskToDelete(task)
+	}
+
+	// Confirmación real
+	const confirmDelete = () => {
+		if (taskToDelete) {
+			setTasks(tasks.filter(t => t.id !== taskToDelete.id))
+			setTaskToDelete(null)
+		}
+	}
+
+	const cancelDelete = () => {
+		setTaskToDelete(null)
+	}
+
 	return (
 		<>
 			<Box minH="100vh" bg="gray.900"> {/* Fondo oscuro full screen */}
@@ -129,7 +150,7 @@ function App() {
 										key={task.id}
 										task={task}
 										onCompleted={toggleComplete}
-										onDelete={deleteTask}
+										onDelete={handleDeleteClick}
 									/>
 								))
 							)}
@@ -137,6 +158,15 @@ function App() {
 
 					</VStack>
 				</Container>
+
+				{/* Dialog fuera del Container */}
+				<DeleteConfirmDialog
+					isOpen={!!taskToDelete}
+					onClose={cancelDelete}
+					onConfirm={confirmDelete}
+					taskName={taskToDelete?.name || ''}
+				/>
+	  
 			</Box>
 		</>
 	)
