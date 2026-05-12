@@ -3,6 +3,7 @@ import './App.css'
 import { useEffect, useState } from "react"
 import EmptyState from './components/EmptyState.tsx'
 import type { Task } from './types'
+import TaskItem from './components/TaskItem.tsx'
 
 function App() {
 
@@ -88,45 +89,12 @@ function App() {
 								<EmptyState />
 							) : (						
 							tasks.map(task => (
-								<HStack
+								<TaskItem
 									key={task.id}
-									p={4}
-									bg="gray.800"        // Tarjeta gris oscuro
-									borderRadius="md"
-									borderWidth="1px"
-									borderColor="gray.700"
-									opacity={task.completed ? 0.6 : 1}
-								>
-									
-									<Checkbox.Root
-										checked={task.completed}  
-										onCheckedChange={() => toggleComplete(task.id)}
-										colorPalette="green"
-									>
-										<Checkbox.HiddenInput />
-										<HStack>
-											<Checkbox.Control />
-											<Checkbox.Label>
-												<Text
-													color="gray.100"
-													textDecoration={task.completed ? "line-through" : "none"}
-												>
-													{task.name}
-												</Text>
-											</Checkbox.Label>
-										</HStack>
-									</Checkbox.Root>
-									
-									<Button
-										colorPalette="red"
-										size="sm"
-										variant="ghost"
-										onClick={() => deleteTask(task.id)}
-										ml="auto" // Empuja el botón a la derecha
-									>
-										🗑️ Borrar
-									</Button>
-								</HStack>
+									task={task}
+									onDelete={deleteTask}
+									onCompleted={toggleComplete}
+								/>
 							)))}
 						</VStack>
 					</VStack>
