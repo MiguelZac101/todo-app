@@ -97,7 +97,7 @@ Este proyecto usa [Conventional Commits](https://www.conventionalcommits.org/):
 
 Desplegado en Vercel: [todo-app](https://todo-kqs6ms0hk-miguelzac101s-projects.vercel.app/)
 
-[[Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/miguelzac101/todo-app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/miguelzac101/todo-app)
 
 ## 📸 Screenshots
 
