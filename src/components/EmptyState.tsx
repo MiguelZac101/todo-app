@@ -5,7 +5,7 @@ type EmptyStateProps = {
 	filter: FilterType
 }
 
-export default function EmptyState({ filter }: EmptyStateProps) {
+export function EmptyState({ filter }: EmptyStateProps) {
 	const messages = {
 		all: {
 			emoji: '📝',

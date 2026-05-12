@@ -1,12 +1,8 @@
 import { Box, Button, HStack, Input, VStack, Heading, Container } from '@chakra-ui/react'
 import './App.css'
 import { useEffect, useState } from "react"
-import EmptyState from './components/EmptyState.tsx'
+import { EmptyState, TaskProgress, FilterTabs, DeleteConfirmDialog, TaskItem } from './components'
 import type { FilterType, Task } from './types'
-import TaskItem from './components/TaskItem.tsx'
-import { TaskProgress } from './components/TaskProgress.tsx'
-import { FilterTabs } from './components/FilterTabs.tsx'
-import { DeleteConfirmDialog } from './components/DeleteConfirmDialog.tsx'
 
 function App() {
 

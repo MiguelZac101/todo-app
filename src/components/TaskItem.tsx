@@ -10,7 +10,7 @@ type TaskItemProps = {
 	onEdit: (id: number, newName: string) => void
 }
 
-const TaskItem = ({ task, onDelete, onCompleted, onEdit }: TaskItemProps) => {
+export const TaskItem = ({ task, onDelete, onCompleted, onEdit }: TaskItemProps) => {
 	// Estado local para manejar la edición de la tarea
 	const [isEditing, setIsEditing] = useState(false)
 	// Estado local para manejar el nombre editado de la tarea, inicializado con el nombre actual de la tarea
@@ -127,5 +127,3 @@ const TaskItem = ({ task, onDelete, onCompleted, onEdit }: TaskItemProps) => {
 		</HStack>
 	)
 }
-
-export default TaskItem
