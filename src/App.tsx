@@ -2,9 +2,10 @@ import { Box, Button, HStack, Input, VStack, Text, Heading, Container, Checkbox 
 import './App.css'
 import { useEffect, useState } from "react"
 import EmptyState from './components/EmptyState.tsx'
-import type { Task } from './types'
+import type { FilterType, Task } from './types'
 import TaskItem from './components/TaskItem.tsx'
 import { TaskProgress } from './components/TaskProgress.tsx'
+import { FilterTabs } from './components/FilterTabs.tsx'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
 	})
 
 	const [input, setInput] = useState('')
+	const [filter, setFilter] = useState<FilterType>('all') // ← nuevo estado para el filtro
 
 	// Guarda tareas en localStorage cada vez que cambian
 	useEffect(() => {
@@ -65,6 +67,17 @@ function App() {
 	// Calcula cuántas tareas están completadas para mostrar el progreso
 	const taskCompletedCount = tasks.filter(t => t.completed).length
 
+	// Calcula cuántas tareas están activas (no completadas) para mostrar en los filtros
+	const completedCount = tasks.filter(t => t.completed).length
+	const activeCount = tasks.length - completedCount
+	// Filtrar tareas según el filtro activo
+	const filteredTasks = tasks.filter(task => {
+		if (filter === 'all') return true
+		if (filter === 'active') return !task.completed
+		if (filter === 'completed') return task.completed
+		return true
+	})
+
 	return (
 		<>
 			<Box minH="100vh" bg="gray.900"> {/* Fondo oscuro full screen */}
@@ -93,19 +106,35 @@ function App() {
 							</Button>
 						</HStack>
 
+						{/* Filtros - solo si hay tareas */}
+						{tasks.length > 0 && (
+							<FilterTabs
+								currentFilter={filter}
+								onFilterChange={setFilter}
+								counts={{
+									all: tasks.length,
+									active: activeCount,
+									completed: completedCount
+								}}
+							/>
+						)}
+
+						{/* Lista filtrada */}
 						<VStack w="100%" gap={3} align="stretch">
-							{ tasks.length === 0 ? (								
+							{filteredTasks.length === 0 ? (
 								<EmptyState />
-							) : (						
-							tasks.map(task => (
-								<TaskItem
-									key={task.id}
-									task={task}
-									onDelete={deleteTask}
-									onCompleted={toggleComplete}
-								/>
-							)))}
+							) : (
+								filteredTasks.map(task => (
+									<TaskItem
+										key={task.id}
+										task={task}
+										onCompleted={toggleComplete}
+										onDelete={deleteTask}
+									/>
+								))
+							)}
 						</VStack>
+
 					</VStack>
 				</Container>
 			</Box>
