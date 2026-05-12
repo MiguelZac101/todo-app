@@ -27,6 +27,7 @@ function App() {
 	const [input, setInput] = useState('')
 	const [filter, setFilter] = useState<FilterType>('all') // ← nuevo estado para el filtro
 	const [taskToDelete, setTaskToDelete] = useState<Task | null>(null)
+	const [taskToEdit, setTaskToEdit] = useState<Task | null>(null)
 
 	// Guarda tareas en localStorage cada vez que cambian
 	useEffect(() => {
@@ -99,6 +100,14 @@ function App() {
 		setTaskToDelete(null)
 	}
 
+	// Función para manejar la edición de una tarea
+	const handleEditTask = (id: number, name: string) => {
+		const task = tasks.find(t => t.id === id)
+		if(task) {
+			setTasks(tasks.map(t => t.id === id ? {...t, name} : t))
+		}
+	}
+
 	return (
 		<>
 			<Box minH="100vh" bg="gray.900"> {/* Fondo oscuro full screen */}
@@ -151,6 +160,7 @@ function App() {
 										task={task}
 										onCompleted={toggleComplete}
 										onDelete={handleDeleteClick}
+										onEdit={handleEditTask}
 									/>
 								))
 							)}
