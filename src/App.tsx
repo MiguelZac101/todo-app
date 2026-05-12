@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import EmptyState from './components/EmptyState.tsx'
 import type { Task } from './types'
 import TaskItem from './components/TaskItem.tsx'
+import { TaskProgress } from './components/TaskProgress.tsx'
 
 function App() {
 
@@ -61,12 +62,20 @@ function App() {
 		))
 	}
 
+	// Calcula cuántas tareas están completadas para mostrar el progreso
+	const taskCompletedCount = tasks.filter(t => t.completed).length
+
 	return (
 		<>
 			<Box minH="100vh" bg="gray.900"> {/* Fondo oscuro full screen */}
 				<Container maxW="md" py={10}>
 					<VStack gap={6}>
 						<Heading color="white">Mi Todo List</Heading>
+
+						<TaskProgress
+							completed={taskCompletedCount}
+							total={tasks.length}
+						/>
 
 						<HStack w="100%">
 							<Input
